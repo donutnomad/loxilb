@@ -3124,7 +3124,7 @@ func (r *ruleEnt) LB2DP(work DpWorkT) int {
 		return -1
 	}
 
-	if !nWork.ServiceIP.IsUnspecified() || nWork.BlockNum != 0 {
+	if !nWork.ServiceIP.IsUnspecified() || nWork.BlockNum != 0 || (nWork.ServiceIP.IsUnspecified() && nWork.L4Port == 0) {
 		mh.dp.ToDpCh <- nWork
 		r.VIP2DP(nWork.Work)
 	}
